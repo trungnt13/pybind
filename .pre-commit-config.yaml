@@ -29,7 +29,7 @@ ci:
 
 fail_fast: True
 
-default_stages: [push]
+default_stages: [commit]
 
 repos:
   # Standard hooks
@@ -41,7 +41,7 @@ repos:
       - id: check-merge-conflict
       - id: check-symlinks
       - id: check-yaml
-        exclude: ^conda\.recipe/meta\.yaml$
+        exclude: (^conda\.recipe/meta\.yaml$|ISSUE_TEMPLATE)
       - id: debug-statements
       - id: mixed-line-ending
       - id: requirements-txt-fixer
@@ -51,18 +51,18 @@ repos:
         stages: [push]
 
   # Runs Black, pyupgrade, isort, autoflake, blacken-docs
-  - repo: https://github.com/Zac-HD/shed
-    rev: 2023.3.1
-    hooks:
-      - id: shed
-        exclude: ^(docs)
+  # - repo: https://github.com/Zac-HD/shed
+  #   rev: 2023.3.1
+  #   hooks:
+  #     - id: shed
+  #       exclude: ^(docs)
 
   # Changes tabs to spaces
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.4.2
     hooks:
       - id: remove-tabs
-        exclude: ^(docs)
+        exclude: ^(docs)|.*\.cxx
 
   # CMake formatting
   - repo: https://github.com/cheshirekow/cmake-format-precommit
