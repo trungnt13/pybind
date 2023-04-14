@@ -1,0 +1,22 @@
+name: pybind
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python=3.8
+  - pip=22.2.2
+  - conda-forge::cmake=3.24
+
+  - pip:
+      - ipython
+      - numpy
+      - scipy
+      - matplotlib
+      - pybind11
+      - invoke
+      - cffi
+      - cython
+      - swig
+      - ffi-navigator

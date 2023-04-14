@@ -1,0 +1,80 @@
+# See documentation at: https://pre-commit.com/
+# To use:
+#
+#     pre-commit run -a
+#
+# Or:
+#
+#     pre-commit install  # (runs every time you commit)
+#     pre-commit install  --hook-type pre-push  # (runs every time you push)
+#
+# Uninstall:
+#
+#     pre-commit uninstall
+#
+# How to prevent running it:
+#
+#     git options: --no-verify or -n
+#     git commit -n -m "YOUR COMMIT MESSAGE"
+#
+# To update this file:
+#
+#     pre-commit autoupdate
+#
+# See https://github.com/pre-commit/pre-commit
+
+ci:
+  autoupdate_commit_msg: "chore: update pre-commit hooks"
+  autofix_commit_msg: "style: pre-commit fixes"
+
+fail_fast: True
+
+default_stages: [push]
+
+repos:
+  # Standard hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+        exclude: ^conda\.recipe/meta\.yaml$
+      - id: debug-statements
+      - id: mixed-line-ending
+      - id: requirements-txt-fixer
+      - id: end-of-file-fixer
+        stages: [push]
+      - id: trailing-whitespace
+        stages: [push]
+
+  # Runs Black, pyupgrade, isort, autoflake, blacken-docs
+  - repo: https://github.com/Zac-HD/shed
+    rev: 2023.3.1
+    hooks:
+      - id: shed
+        exclude: ^(docs)
+
+  # Changes tabs to spaces
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.4.2
+    hooks:
+      - id: remove-tabs
+        exclude: ^(docs)
+
+  # CMake formatting
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+      - id: cmake-format
+        additional_dependencies: [pyyaml]
+        types: [file]
+        files: (\.cmake|CMakeLists.txt)(.in)?$
+
+# Suggested hook if you add a .clang-format file
+# - repo: https://github.com/pre-commit/mirrors-clang-format
+#  rev: v13.0.0
+#  hooks:
+#  - id: clang-format

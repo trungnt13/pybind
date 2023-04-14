@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                // "${env:CONDA_PREFIX}/lib/python3.8/site-packages/pybind11/include",
+                "/Users/trungnt13/miniconda3/envs/pybind/lib/python3.8/site-packages/pybind11/include",
+                "/Users/trungnt13/miniconda3/envs/pybind/include/python3.8"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

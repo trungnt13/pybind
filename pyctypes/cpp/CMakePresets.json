@@ -1,0 +1,48 @@
+{
+    "version": 2,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "pyctypes",
+            "displayName": "[Pyctypes] Clang 14.0.3 arm64-apple-darwin22.1.0",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/out/build",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install",
+                "CMAKE_C_COMPILER": "/usr/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "pyctypes",
+            "displayName": "[Pyctypes] Clang 14.0.3 arm64-apple-darwin22.1.0",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "configurePreset": "pyctypes"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "pyctypes",
+            "displayName": "[Pyctypes] Clang 14.0.3 arm64-apple-darwin22.1.0",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "configurePreset": "pyctypes",
+            "output": {
+                "outputOnFailure": true,
+                "verbosity": "extra"
+            },
+            "execution": {
+                "stopOnFailure": true,
+                "noTestsAction": "error",
+                "jobs": 0
+            }
+        }
+    ]
+}
